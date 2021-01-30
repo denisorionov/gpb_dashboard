@@ -29,6 +29,9 @@ class Flow(models.Model):
     outflow = models.DecimalField('списание', max_digits=9, decimal_places=2, db_index=True)
     balance = models.DecimalField('баланс', max_digits=9, decimal_places=2, db_index=True)
     account = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='flow', verbose_name='вид счета')
+    week = models.IntegerField('неделя')
+    month = models.CharField('месяц', max_length=3, db_index=True)
+    year = models.IntegerField('год')
 
     def __str__(self):
         return str(self.date)

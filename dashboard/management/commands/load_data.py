@@ -25,7 +25,10 @@ class Command(BaseCommand):
                     inflow=row[8],
                     outflow=row[9],
                     balance=row[7],
-                    account=new_account
+                    account=new_account,
+                    week=row[10],
+                    month=row[11],
+                    year=row[12]
                 )
 
         print("Data loaded")
