@@ -1,14 +1,8 @@
+import datetime
+
 from django import forms
+from django.forms import SelectDateWidget
 
-from dashboard.models import Flow
 
-
-class FlowForm(forms.ModelForm):
-
-    class Meta:
-        model = Flow
-        fields = ('date',)
-
-        widgets = {
-            'date': forms.DateInput(attrs={'class': 'form-control'})
-        }
+class DateForm(forms.Form):
+    date = forms.DateField(widget=forms.DateInput(attrs={'class': 'datepicker'}))
