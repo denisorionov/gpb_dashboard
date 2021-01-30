@@ -3,7 +3,7 @@ from datetime import datetime
 
 from django.core.management.base import BaseCommand
 
-from dashboard.models import Company, Account, Flow
+from dashboard.models import Company, Account, Flow, Currency
 
 
 class Command(BaseCommand):
@@ -18,8 +18,8 @@ class Command(BaseCommand):
                 if row[1] == 'Organi':
                     continue
                 new_company, com_created = Company.objects.get_or_create(name=row[1])
-                new_account, acc_created = Account.objects.get_or_create(name=row[2], company=new_company,
-                                                                         currency=row[3])
+                new_currency, cur_created = Currency.objects.get_or_create(name=row[3], company=new_company)
+                new_account, acc_created = Account.objects.get_or_create(name=row[2], currency=new_currency)
                 Flow.objects.create(
                     date=datetime.strptime(row[4], '%d.%m.%Y'),
                     inflow=row[8],
