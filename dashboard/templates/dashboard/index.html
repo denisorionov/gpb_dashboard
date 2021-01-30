@@ -20,6 +20,9 @@
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
   <link rel="stylesheet" href="/resources/demos/style.css" />
+
+  {{ chart_data|json_script:"chart-data" }}
+
   <script>
         $(function() {
             $( "#id_date" ).datepicker();
@@ -342,77 +345,29 @@ to get the desired effect
           {% endfor %}
         </div>
         <!-- /.row -->
-
         <div class="row">
+          <div class="col-sm-8">
+          <h4>Поступления по счетам</h4>
+          </div>
+        </div>
+        <div class="row">
+          {% for company in companies %}
           <div class="col-lg-4">
             <div class="card">
               <div class="card-header border-0">
                 <div class="d-flex justify-content-between">
-                  <h3 class="card-title">ЭТП</h3>
+                  <h3 class="card-title">{{ company.name }} поступления по счетам с 01.09 по 07.09.2020</h3>
                 </div>
               </div>
               <div class="card-body">
-                <div class="d-flex">
-                  <p class="d-flex flex-column">
-                    <span>Поступления по всем счетам</span>
-                  </p>
-                  <p class="ml-auto d-flex flex-column text-right">
-                    <span class="text-muted">2020 год</span>
-                  </p>
-                </div>
-                <!-- /.d-flex -->
-                <div class="position-relative mb-4">
-                  <canvas id="myChart" height="200"></canvas>
+                <div>
+                  <canvas id="inflowChart{{ company.name }}" height="300"></canvas>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-lg-4">
-            <div class="card">
-              <div class="card-header border-0">
-                <div class="d-flex justify-content-between">
-                  <h3 class="card-title">ЭТП</h3>
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="d-flex">
-                  <p class="d-flex flex-column">
-                    <span>Поступления по всем счетам</span>
-                  </p>
-                  <p class="ml-auto d-flex flex-column text-right">
-                    <span class="text-muted">2020 год</span>
-                  </p>
-                </div>
-                <!-- /.d-flex -->
-                <div class="position-relative mb-4">
-                  <canvas id="Chart" height="200"></canvas>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="card">
-              <div class="card-header border-0">
-                <div class="d-flex justify-content-between">
-                  <h3 class="card-title">ЭТП</h3>
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="d-flex">
-                  <p class="d-flex flex-column">
-                    <span>Поступления по всем счетам</span>
-                  </p>
-                  <p class="ml-auto d-flex flex-column text-right">
-                    <span class="text-muted">2020 год</span>
-                  </p>
-                </div>
-                <!-- /.d-flex -->
-                <div class="position-relative mb-4">
-                  <canvas id="myChart" height="200"></canvas>
-                </div>
-              </div>
-            </div>
-          </div>
+
+        {% endfor %}
         </div>
         </div>
             <!-- /.card -->
@@ -451,37 +406,22 @@ to get the desired effect
 <script src="{% static 'dist/js/demo.js' %}"></script>
 <script src="{% static 'dist/js/pages/dashboard3.js' %}"></script>
 
-
+{% for company in companies %}
 <script>
-let ctx = document.getElementById('myChart').getContext('2d');
+
+let ctx = document.getElementById('inflowChart{{ company.name|safe }}').getContext('2d');
 let chart = new Chart(ctx, {
     type: 'line',
-
-    data: {
-        labels: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль'],
-        datasets: [
-        { // График зелёного цвета
-            label: 'График 1',
-            backgroundColor: 'transparent',
-            borderColor: 'green',
-            data: [0, 10, 5, 2, 20, 30, 45],
-        },
-        { // График синего цвета
-            label: 'График 2',
-            backgroundColor: 'transparent',
-            borderColor: 'blue',
-            data: [5, 3, 10, 30, 40, 20, 5]
-        },
-        { // График красного цвета
-            label: 'График 3',
-            backgroundColor: 'transparent',
-            borderColor: 'red',
-            data: [20, 15, 10, 30, 25, 30, 35]
-        }],
-    },
+    data: {{ chart_data|safe }},
+    options: {
+      legend: {
+        position: 'bottom'
+            }
+          }
 });
-</script>
 
+</script>
+{% endfor %}
 
 </body>
 </html>
