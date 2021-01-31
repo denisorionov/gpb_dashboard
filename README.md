@@ -5,9 +5,9 @@ Django 3.1.5.
 AdminLTE template
 
 ### 1. Implemented (on 31/01/2021):
-* **Account balances table for each company on each day.** 
-* **Inflow chart for each company for week.**
-* **Load data from .csv file:**
+* Account balances table for each company on each day.
+* Inflow chart for each company for week.
+* Load data from .csv file:
  ```shell script
     python manage.py load_data file.csv   
  ```
