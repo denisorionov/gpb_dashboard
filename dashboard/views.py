@@ -26,14 +26,11 @@ def main_view(request):
     date_end = datetime.strptime('07.09.2020', '%d.%m.%Y')
     date_list = [date.strftime('%d.%m.%Y') for date in sorted(list(set([flow.date for flow in Flow.objects.filter(date__gte=date_from, date__lte=date_end)])))]
     datasets = []
-
     charts_data = {}
 
     for company in companies:
-        print(company.name)
         color = ['blue', 'green', 'yellow', 'red']
         for account in Account.objects.filter(currency__name="RUB").filter(currency__company__name=company.name):
-            print(account)
             inflow_list = [int(flow.inflow) for flow in
                     Flow.objects.filter(account=account).filter(date__gte=date_from, date__lte=date_end)]
             datasets.append(
@@ -50,7 +47,12 @@ def main_view(request):
             'datasets': datasets,
         }
 
-        charts_data[company.name] = json.dumps(chart_data)
+        if company.name == "ЭТП_ГПБ":
+            charts_data["ETP_GPB"] = json.dumps(chart_data, ensure_ascii=False)
+        if company.name == "Консалтинг_ГПБ":
+            charts_data["Consalting_GPB"] = json.dumps(chart_data, ensure_ascii=False)
+        if company.name == "Юр лицо":
+            charts_data["LTD"] = json.dumps(chart_data, ensure_ascii=False)
         datasets = []
 
     return render(request, 'dashboard/index.html',

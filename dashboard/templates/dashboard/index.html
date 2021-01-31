@@ -351,22 +351,52 @@ to get the desired effect
           </div>
         </div>
         <div class="row">
-          {% for company in companies %}
+
           <div class="col-lg-4">
             <div class="card">
               <div class="card-header border-0">
                 <div class="d-flex justify-content-between">
-                  <h3 class="card-title">{{ company.name }} поступления по счетам с 01.09 по 07.09.2020</h3>
+                  <h3 class="card-title">Консалтинг_ГПБ поступления по счетам с 01.09 по 07.09.2020</h3>
                 </div>
               </div>
               <div class="card-body">
                 <div>
-                  <canvas id="inflowChart{{ company.name }}" height="300"></canvas>
+                  <canvas id="inflowChartConsalting_GPB" height="300"></canvas>
                 </div>
               </div>
             </div>
           </div>
-        {% endfor %}
+
+          <div class="col-lg-4">
+            <div class="card">
+              <div class="card-header border-0">
+                <div class="d-flex justify-content-between">
+                  <h3 class="card-title">ЭТП_ГПБ поступления по счетам с 01.09 по 07.09.2020</h3>
+                </div>
+              </div>
+              <div class="card-body">
+                <div>
+                  <canvas id="inflowChartETP_GPB" height="300"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="card">
+              <div class="card-header border-0">
+                <div class="d-flex justify-content-between">
+                  <h3 class="card-title">Юр лицо поступления по счетам с 01.09 по 07.09.2020</h3>
+                </div>
+              </div>
+              <div class="card-body">
+                <div>
+                  <canvas id="inflowChartLTD" height="300"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
         </div>
             <!-- /.card -->
