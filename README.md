@@ -4,7 +4,7 @@ Python 3.8.
 Django 3.1.5.
 AdminLTE template
 
-### Implemented (on 31/01/2021):
+## Implemented (on 31/01/2021):
 * Account balances table for each company on each day.
 * Inflow chart for each company for week.
 * Load data from .csv file:
