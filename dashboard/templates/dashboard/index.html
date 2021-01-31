@@ -366,7 +366,6 @@ to get the desired effect
               </div>
             </div>
           </div>
-
         {% endfor %}
         </div>
         </div>
@@ -406,13 +405,34 @@ to get the desired effect
 <script src="{% static 'dist/js/demo.js' %}"></script>
 <script src="{% static 'dist/js/pages/dashboard3.js' %}"></script>
 
-{% for company in companies %}
-<script>
 
-let ctx = document.getElementById('inflowChart{{ company.name|safe }}').getContext('2d');
+<script>
+let ctx = document.getElementById('inflowChartETP_GPB').getContext('2d');
 let chart = new Chart(ctx, {
     type: 'line',
-    data: {{ chart_data|safe }},
+    data: {{ charts_data.ETP_GPB|safe }},
+    options: {
+      legend: {
+        position: 'bottom'
+            }
+          }
+});
+
+let ctx_2 = document.getElementById('inflowChartLTD').getContext('2d');
+let chart_2 = new Chart(ctx_2, {
+    type: 'line',
+    data: {{ charts_data.LTD|safe }},
+    options: {
+      legend: {
+        position: 'bottom'
+            }
+          }
+});
+
+let ctx_3 = document.getElementById('inflowChartConsalting_GPB').getContext('2d');
+let chart_3 = new Chart(ctx_3, {
+    type: 'line',
+    data: {{ charts_data.Consalting_GPB|safe }},
     options: {
       legend: {
         position: 'bottom'
@@ -421,7 +441,6 @@ let chart = new Chart(ctx, {
 });
 
 </script>
-{% endfor %}
 
 </body>
 </html>
