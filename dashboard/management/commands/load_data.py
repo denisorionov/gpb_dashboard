@@ -13,9 +13,9 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         for csv_file in options['csv_file']:
-            data_reader = csv.reader(open(csv_file), delimiter=';', quotechar='"')
+            data_reader = csv.reader(open(csv_file), delimiter=',', quotechar='"')
             for row in data_reader:
-                if row[1] == 'Organi':
+                if row[0] == 'id':
                     continue
                 new_company, com_created = Company.objects.get_or_create(name=row[1])
                 new_currency, cur_created = Currency.objects.get_or_create(name=row[3], company=new_company)
