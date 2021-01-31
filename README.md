@@ -18,7 +18,7 @@ AdminLTE template
 3. Create virtual environment: python -m venv env
 4. Activate the virtual environment: source env/bin/activate (for linux) or env/scripts/activate (for windows)
 5. Install requirements: pip install -r requirements.txt
-7. Migrate python manage.py migrate (if OperationalError: no such table: python manage.py migrate --run-syncdb)
+7. Migrate: python manage.py migrate (if OperationalError: no such table: python manage.py migrate --run-syncdb)
 8. Run the project: python manage.py runserver
 9. Open in browser: http://localhost:8000 or http://127.0.0.1:8000.
 
