@@ -22,4 +22,3 @@ AdminLTE template
 8. Run the project: python manage.py runserver
 9. Open in browser: http://localhost:8000 or http://127.0.0.1:8000.
 
-![Image](https://github.com/denisorionov/gpb_dashboard/tree/master/dashboard/static/ex1.png)
