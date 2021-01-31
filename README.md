@@ -21,3 +21,5 @@ AdminLTE template
 7. Migrate python manage.py migrate (if OperationalError: no such table: python manage.py migrate --run-syncdb)
 8. Run the project: python manage.py runserver
 9. Open in browser: http://localhost:8000 or http://127.0.0.1:8000.
+
+![Image](https://github.com/denisorionov/gpb_dashboard/tree/master/dashboard/static/ex1.JPG)
