@@ -14,7 +14,7 @@ https://gpbdashboard.herokuapp.com
     python manage.py load_data file.csv   
  ```
 
-## Installing project.
+## Installing project
 1. [Install python.](https://www.python.org/downloads/)
 2. Download or clone repository.
 3. Create virtual environment: python -m venv env
