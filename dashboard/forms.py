@@ -5,4 +5,4 @@ from django.forms import SelectDateWidget
 
 
 class DateForm(forms.Form):
-    date = forms.DateField(widget=forms.DateInput(attrs={'class': 'datepicker'}))
+    date = forms.DateField(widget=forms.DateInput(attrs={'class': 'datepicker', 'data-date-format': "mm.dd.yyyy"}))

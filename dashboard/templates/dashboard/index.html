@@ -292,15 +292,13 @@ to get the desired effect
       <div class="container-fluid">
         <div class="row">
           {% for company in companies %}
-
           <div class="col-lg-4">
             <div class="card">
               <div class="card-header border-0">
-                <h3 class="card-title">{{ company.name }} остатки по счетам на {{ date }}</h3>
-                <div class="card-tools">
-                </div>
+                <h3 class="card-title">{{ company.name }}</h3>
               </div>
               <div class="card-body table-responsive p-0">
+
                 <table class="table table-bordered table-hover table-condensed small" id="BalanceTable">
                   <thead>
                   <tr>
