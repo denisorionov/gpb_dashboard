@@ -10,8 +10,8 @@ from dashboard.models import Flow, Company, Currency, Account
 
 def main_view(request):
     if request.method == 'GET':
-        date_form = DateForm()
         date = datetime.strptime('01.09.2020', '%d.%m.%Y')
+        date_form = DateForm(initial={'date': date})
 
     if request.method == 'POST':
         date_form = DateForm(request.POST)
