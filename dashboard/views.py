@@ -47,12 +47,7 @@ def main_view(request):
             'datasets': datasets,
         }
 
-        if company.name == "ЭТП_ГПБ":
-            charts_data["ETP_GPB"] = json.dumps(chart_data, ensure_ascii=False)
-        if company.name == "Консалтинг_ГПБ":
-            charts_data["Consalting_GPB"] = json.dumps(chart_data, ensure_ascii=False)
-        if company.name == "Юр лицо":
-            charts_data["LTD"] = json.dumps(chart_data, ensure_ascii=False)
+        charts_data[company.slug] = json.dumps(chart_data, ensure_ascii=False)
         datasets = []
 
     return render(request, 'dashboard/index.html',
