@@ -22,7 +22,6 @@
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
   <link rel="stylesheet" href="/resources/demos/style.css" />
 
-  {{ chart_data|json_script:"chart-data" }}
 
   <script>
         $(function() {
@@ -461,10 +460,16 @@ let chart_3 = new Chart(ctx_3, {
     type: 'line',
     data: {{ charts_data.Consalting_GPB|safe }},
     options: {
-      legend: {
-        position: 'bottom'
-            }
-          }
+            legend: {
+                position: 'bottom',
+                align: 'center',
+                labels: {
+                fontColor: 'black',
+                fontFamily: 'Calibri Light',
+                fontStyle: 'italic'
+                        }
+                    }
+        }
 });
 
 </script>

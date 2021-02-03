@@ -29,7 +29,7 @@ def main_view(request):
     charts_data = {}
 
     for company in companies:
-        color = ['blue', 'green', 'yellow', 'red']
+        color = ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"]
         for account in Account.objects.filter(currency__name="RUB").filter(currency__company__name=company.name):
             inflow_list = [int(flow.inflow) for flow in
                     Flow.objects.filter(account=account).filter(date__gte=date_from, date__lte=date_end)]
