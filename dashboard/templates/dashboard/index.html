@@ -270,18 +270,15 @@ to get the desired effect
             <h1>Финансовое состояние</h1>
           </div>
         </div>
-
-        <div class="row mb-2">
+        <div class="row mb-8">
           <div class="col-sm-8">
-          <h4>Остатки по счетам</h4>
+            <h4>Остатки по счетам</h4>
           </div>
           <div class="col-sm-4">
-            <label>Дата</label>
-          <form action="" method="post">{% csrf_token %}
-            {{ form.date }}
-            <input type="submit" value="применить" />
-        </form>
-
+            <form action="" method="post">{% csrf_token %}
+              <input class="datepicker" id="id_date" name="date" placeholder="01.09.2020" type="text"/>
+              <input type="submit" class=""btn btn-light"" value="применить" />
+            </form>
       </div><!-- /.container-fluid -->
     </section>
 
