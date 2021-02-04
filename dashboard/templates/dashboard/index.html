@@ -270,15 +270,6 @@ to get the desired effect
             <h1>Финансовое состояние</h1>
           </div>
         </div>
-        <div class="row mb-8">
-          <div class="col-sm-8">
-            <h4>Остатки по счетам</h4>
-          </div>
-          <div class="col-sm-4">
-            <form action="" method="post">{% csrf_token %}
-              <input class="datepicker" id="id_date" name="date" placeholder="01.09.2020" type="text"/>
-              <input type="submit" class=""btn btn-light"" value="применить" />
-            </form>
       </div><!-- /.container-fluid -->
     </section>
 
@@ -286,6 +277,17 @@ to get the desired effect
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-8">
+            <h4>Остатки по счетам</h4>
+          </div>
+          <div class="col-sm-4">
+            <form action="" method="post">{% csrf_token %}
+              <input class="datepicker" id="id_date" name="date" placeholder="" type="text"/>
+              <input type="submit" class=""btn btn-light"" value="применить" />
+            </form>
+          </div>
+        </div>
         <div class="row">
           {% for company in companies %}
           <div class="col-lg-4">
