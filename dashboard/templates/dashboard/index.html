@@ -349,53 +349,24 @@ to get the desired effect
         </div>
         <div class="row">
 
+          {% for company in companies %}
           <div class="col-lg-4">
             <div class="card">
-              <div class="card-header border-0">
-                <div class="d-flex justify-content-between">
-                  <h3 class="card-title">Консалтинг_ГПБ поступления по счетам с 01.09 по 07.09.2020</h3>
+              <div class="card card-info">
+                <div class="card-header bg-lightblue">
+                  <h3 class="card-title">{{ company.name }}</h3>
                 </div>
               </div>
               <div class="card-body">
                 <div>
-                  <canvas id="inflowChartConsalting_GPB" height="300"></canvas>
+                  <canvas id="inflowChart{{ company.slug }}" height="300"></canvas>
                 </div>
               </div>
             </div>
           </div>
-
-          <div class="col-lg-4">
-            <div class="card">
-              <div class="card-header border-0">
-                <div class="d-flex justify-content-between">
-                  <h3 class="card-title">ЭТП_ГПБ поступления по счетам с 01.09 по 07.09.2020</h3>
-                </div>
-              </div>
-              <div class="card-body">
-                <div>
-                  <canvas id="inflowChartETP_GPB" height="300"></canvas>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4">
-            <div class="card">
-              <div class="card-header border-0">
-                <div class="d-flex justify-content-between">
-                  <h3 class="card-title">Юр лицо поступления по счетам с 01.09 по 07.09.2020</h3>
-                </div>
-              </div>
-              <div class="card-body">
-                <div>
-                  <canvas id="inflowChartLTD" height="300"></canvas>
-                </div>
-              </div>
-            </div>
-          </div>
-
+          {% endfor %}
         </div>
-        </div>
+      </div>
             <!-- /.card -->
 
       </div>
