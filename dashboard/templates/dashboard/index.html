@@ -7,27 +7,32 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
   <title>ЭТП ГПБ Dashboard</title>
-
-  <!-- Font Awesome Icons -->
+   <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
-  <!-- IonIcons -->
-  <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="{% static 'plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
+  <!-- Tempusdominus Bbootstrap 4 -->
+  <link rel="stylesheet" href="{% static 'plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css' %}">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="{% static 'plugins/select2/css/select2.min.css' %}">
+  <link rel="stylesheet" href="{% static 'plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css' %}">
+  <!-- Bootstrap4 Duallistbox -->
+  <link rel="stylesheet" href="{% static 'plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css' %}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
   <!-- Google Font: Source Sans Pro -->
-  <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- datepicker -->
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
 
-  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-  <link rel="stylesheet" href="/resources/demos/style.css" />
 
-
-  <script>
-        $(function() {
-            $( "#id_date" ).datepicker();
-        });
-  </script>
     <style>
    ul {
     margin-left: -5px; /* Отступ слева */
@@ -265,7 +270,7 @@ to get the desired effect
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
-        <div class="row mb-2">
+        <div class="row">
           <div class="col-sm-8">
             <h1>Финансовое состояние</h1>
           </div>
@@ -277,14 +282,13 @@ to get the desired effect
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
-        <div class="row">
-          <div class="col-sm-8">
+        <div class="d-flex justify-content-between">
+          <div>
             <h4>Остатки по счетам</h4>
           </div>
-          <div class="col-sm-4">
+          <div class="mb-2">
             <form action="" method="post">{% csrf_token %}
-              <input class="datepicker" id="id_date" name="date" placeholder="" type="text"/>
-              <input type="submit" class=""btn btn-light"" value="применить" />
+              {{ form.date }}
             </form>
           </div>
         </div>
@@ -342,13 +346,32 @@ to get the desired effect
           {% endfor %}
         </div>
         <!-- /.row -->
-        <div class="row">
-          <div class="col-sm-8">
+        <div class="d-flex justify-content-between">
+          <div>
           <h4>Поступления по счетам</h4>
           </div>
-        </div>
-        <div class="row">
+          <div>
+            <div>
 
+              <!-- Date range -->
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="far fa-calendar-alt"></i>
+                      </span>
+                    </div>
+                    <input type="text" class="form-control float-right" id="reservation">
+                  </div>
+                  <!-- /.input group -->
+                </div>
+                <!-- /.form group -->
+
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
           {% for company in companies %}
           <div class="col-lg-4">
             <div class="card">
@@ -389,17 +412,29 @@ to get the desired effect
 </div>
 <!-- ./wrapper -->
 
-<!-- REQUIRED SCRIPTS -->
-
-
-<!-- Bootstrap -->
+<!-- jQuery -->
+<!--<script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>-->
+<!-- Bootstrap 4 -->
 <script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-<!-- AdminLTE -->
-<script src="{% static 'dist/js/adminlte.js' %}"></script>
-<!-- OPTIONAL SCRIPTS -->
-<script src="{% static 'plugins/chart.js/Chart.min.js' %}"></script>
+<!-- Select2 -->
+<script src="{% static 'plugins/select2/js/select2.full.min.js' %}"></script>
+<!-- Bootstrap4 Duallistbox -->
+<script src="{% static 'plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js' %}"></script>
+<!-- InputMask -->
+<script src="{% static 'plugins/moment/moment.min.js' %}"></script>
+<script src="{% static 'plugins/inputmask/min/jquery.inputmask.bundle.min.js' %}"></script>
+
+
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="{% static 'plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js' %}"></script>
+<!-- Bootstrap Switch -->
+<script src="{% static 'plugins/bootstrap-switch/js/bootstrap-switch.min.js' %}"></script>
+<!-- AdminLTE App -->
+<script src="{% static 'dist/js/adminlte.min.js' %}"></script>
+<!-- AdminLTE for demo purposes -->
 <script src="{% static 'dist/js/demo.js' %}"></script>
-<script src="{% static 'dist/js/pages/dashboard3.js' %}"></script>
+<!-- ChartJS -->
+<script src="{% static 'plugins/chart.js/Chart.min.js' %}"></script>
 
 
 <script>
@@ -443,6 +478,17 @@ let chart_3 = new Chart(ctx_3, {
 });
 
 </script>
+<script>
+  $(function() {
+    $( "#date" ).datepicker({
+        numberOfMonths: 1,
+        showButtonPanel: true,
+        onSelect: function(dateText, inst) {
+            $(this).parents("form").submit();
+        },
 
+    });
+});
+</script>
 </body>
 </html>
